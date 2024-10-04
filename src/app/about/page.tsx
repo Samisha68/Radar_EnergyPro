@@ -2,9 +2,9 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { Zap, ArrowLeft } from 'lucide-react'
+import { Zap, ArrowLeft, Sun, Users, Leaf, Lightbulb } from 'lucide-react'
 import { motion } from 'framer-motion'
-import Link from 'next/link' // Import Link
+import Link from 'next/link'
 
 export default function About() {
   return (
@@ -27,7 +27,6 @@ export default function About() {
             <Zap size={32} className="text-teal-600" />
             <span className="text-2xl font-bold text-blue-900">EnergyPro</span>
           </motion.div>
-          {/* Use Link for navigation */}
           <Link href="/" passHref>
             <motion.button
               className="bg-blue-500 text-white px-4 py-2 rounded-md flex items-center hover:bg-blue-600 transition-colors"
@@ -48,12 +47,12 @@ export default function About() {
           <div className="flex flex-col lg:flex-row gap-8 items-center">
             {/* Image Column */}
             <motion.div
-              className="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6"
+              className="lg:w-1/2 grid grid-cols-2 gap-6"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              {/* Replace placeholders with actual images when available */}
+              {/* Image blocks */}
               <motion.div
                 whileHover={{ scale: 1.05, boxShadow: '0px 10px 15px rgba(0, 0, 0, 0.2)' }}
                 transition={{ duration: 0.3 }}
@@ -89,10 +88,20 @@ export default function About() {
                   height={300}
                   className="rounded-lg"
                 />
-                
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05, boxShadow: '0px 10px 15px rgba(0, 0, 0, 0.2)' }}
+                transition={{ duration: 0.3 }}
+              >
+                <Image
+                  src="/images/sustainability.jpg"
+                  alt="EnergyPro Sustainability"
+                  width={400}
+                  height={300}
+                  className="rounded-lg"
+                />
               </motion.div>
             </motion.div>
-            
 
             {/* Text Column */}
             <motion.div
@@ -101,49 +110,63 @@ export default function About() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <section>
-                <h2 className="text-2xl font-semibold text-blue-800 mb-3">Our Beginning</h2>
+              <section className="bg-white bg-opacity-70 rounded-lg p-6 shadow-lg">
+                <h2 className="text-2xl font-semibold text-blue-800 mb-3 flex items-center">
+                  <Sun className="mr-2 text-teal-600" size={24} />
+                  Our Beginning
+                </h2>
                 <p className="text-lg text-teal-700">
-                  EnergyPro was born in 2020 out of a vision to revolutionize the way we harness and utilize solar energy. Founded by a group of passionate engineers and environmental advocates, our mission has always been clear: to make sustainable energy accessible to everyone.
+                  Energy Pro was born from a simple idea: what if we could make solar energy work better for everyone in India? We saw a system where solar panel owners were forced to sell energy at low rates and buy it back at high prices. We knew there had to be a better way.
                 </p>
               </section>
 
-              <section>
-                <h2 className="text-2xl font-semibold text-blue-800 mb-3">Innovation Journey</h2>
+              <section className="bg-white bg-opacity-70 rounded-lg p-6 shadow-lg">
+                <h2 className="text-2xl font-semibold text-blue-800 mb-3 flex items-center">
+                  <Users className="mr-2 text-teal-600" size={24} />
+                  Join Our Mission
+                </h2>
                 <p className="text-lg text-teal-700">
-                  We started in a small garage, developing innovative solar technologies that could be easily integrated into everyday life. Our breakthrough came with the development of ultra-efficient, flexible solar panels that could be applied to various surfaces, from rooftops to vehicles.
+                  Imagine a world where your rooftop solar panels can power your neighbors! We're creating a decentralized energy marketplace that connects communities, promotes green living, and speeds up India's journey to clean energy.
                 </p>
               </section>
 
-              <section>
-                <h2 className="text-2xl font-semibold text-blue-800 mb-3">Our Values</h2>
+              <section className="bg-white bg-opacity-70 rounded-lg p-6 shadow-lg">
+                <h2 className="text-2xl font-semibold text-blue-800 mb-3 flex items-center">
+                  <Lightbulb className="mr-2 text-teal-600" size={24} />
+                  Our Vision
+                </h2>
                 <p className="text-lg text-teal-700">
-                  As we grew, we never lost sight of our core values: sustainability, innovation, and community. Today, EnergyPro is at the forefront of the renewable energy revolution, constantly pushing the boundaries of what's possible in solar technology.
+                  We envision a future where neighborhoods in India harness solar energy through efficient micro-grids, integrating technology to create self-sufficient communities. This transformation will empower residents to produce, share, and manage their energy needs sustainably.
                 </p>
               </section>
 
-              <section>
-                <h2 className="text-2xl font-semibold text-blue-800 mb-3">Join Our Mission</h2>
+              <section className="bg-white bg-opacity-70 rounded-lg p-6 shadow-lg">
+                <h2 className="text-2xl font-semibold text-blue-800 mb-3 flex items-center">
+                  <Leaf className="mr-2 text-teal-600" size={24} />
+                  Our Impact
+                </h2>
                 <p className="text-lg text-teal-700">
-                  Join us in our mission to create a cleaner, brighter future powered by the sun. Together, we can make a difference, one solar panel at a time.
+                  At the heart of our mission lies a commitment to fostering a sustainable future. By promoting solar adoption, we aim to significantly reduce carbon emissions, contributing to a cleaner and healthier planet.
                 </p>
               </section>
             </motion.div>
           </div>
 
           {/* Call to Action Section */}
-          <section className="text-center mt-8">
-            <h2 className="text-2xl font-bold text-blue-900">Ready to Make a Change?</h2>
-            <p className="text-lg text-teal-700 mb-4">Discover how EnergyPro can help you harness the power of the sun.</p>
-            <Link href="/services" passHref>
-              <motion.button
-                className="bg-teal-500 text-white px-6 py-3 rounded-md hover:bg-teal-600 transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Explore Our Services
-              </motion.button>
-            </Link>
+          <section className="relative mt-12 bg-teal-500 text-white p-8 rounded-lg shadow-xl">
+            <h2 className="text-2xl font-bold text-center">Ready to Make a Change?</h2>
+            <p className="text-lg text-center mb-4">Discover how EnergyPro can help you harness the power of the sun.</p>
+            <div className="text-center">
+              <Link href="/services" passHref>
+                <motion.button
+                  className="bg-white text-teal-500 px-6 py-3 rounded-md hover:bg-gray-100 transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Explore Our Services
+                </motion.button>
+              </Link>
+            </div>
           </section>
         </div>
       </main>

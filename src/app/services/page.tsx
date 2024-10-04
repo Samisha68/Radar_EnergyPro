@@ -2,7 +2,8 @@
 
 import React, { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Zap, Sun, Wind, Droplet, Battery, Home, Factory, Phone, Mail, MapPin, ArrowRight } from 'lucide-react'
+import { Zap, DollarSign, Tag, BarChart, Globe, ShoppingCart, TrendingUp, Heart, Grid, LifeBuoy, Map, Lock,  Code, Phone, Mail, MapPin, ArrowRight } from 'lucide-react'
+import {Coins} from 'lucide-react'
 import Link from 'next/link'
 
 export default function Services() {
@@ -70,12 +71,28 @@ export default function Services() {
             <h2 className="text-4xl font-bold text-blue-900 mb-12 text-center">Our Innovative Solutions</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
-                { icon: Sun, title: "Solar Panel Installation", description: "State-of-the-art solar panels for maximum energy efficiency" },
-                { icon: Wind, title: "Wind Energy Solutions", description: "Harnessing the power of wind for sustainable electricity" },
-                { icon: Droplet, title: "Hydroelectric Systems", description: "Clean energy from flowing water sources" },
-                { icon: Battery, title: "Energy Storage", description: "Advanced battery solutions for reliable power supply" },
-                { icon: Home, title: "Smart Home Integration", description: "Seamlessly integrate renewable energy into your home" },
-                { icon: Factory, title: "Industrial Energy Management", description: "Comprehensive energy solutions for businesses" },
+                // For Solar Energy Producers
+                { icon: DollarSign, title: "Energy Trading Platform", description: "Sell your excess solar energy directly to neighbors at competitive rates." },
+                { icon: Zap, title: "Smart Meter Integration", description: "IoT-enabled smart meters for accurate energy production tracking." },
+                { icon: Tag, title: "Flexible Pricing", description: "Set your own selling price within market-competitive ranges." },
+                { icon: BarChart, title: "Real-time Analytics", description: "Monitor your energy production, sales, and earnings in real-time." },
+
+                // For Energy Buyers
+                { icon: Globe, title: "Access to Clean Energy", description: "Purchase locally-produced solar energy at rates lower than grid prices." },
+                { icon: ShoppingCart, title: "Flexible Buying Options", description: "Buy energy as needed or set up automatic purchases." },
+                { icon: TrendingUp, title: "Energy Usage Insights", description: "Track your consumption patterns and optimize your energy use." },
+                { icon: Heart, title: "Support Local Producers", description: "Contribute to your community's sustainability by supporting local solar energy producers." },
+
+                // For Communities
+                { icon: Grid, title: "Micro-grid Development", description: "We help communities set up and manage local energy micro-grids." },
+                { icon: LifeBuoy, title: "Energy Independence Consulting", description: "Guidance on reducing dependence on the central grid." },
+                { icon: Map, title: "Community Energy Planning", description: "Assist in creating sustainable energy plans for neighborhoods and towns." },
+
+                // Technology Services
+                { icon: Lock, title: "Blockchain-based Transactions", description: "Secure, transparent, and efficient energy trading using blockchain technology." },
+                { icon: Coins, title: "Energy Pro Token (EPT) System", description: "Our digital token system simplifies energy transactions (100 EPT = 1 unit of electricity)." },
+                { icon: Code, title: "API Integration", description: "Businesses can integrate seamlessly with our energy trading platform." }
+
               ].map((service, index) => (
                 <motion.div
                   key={index}
@@ -104,7 +121,7 @@ export default function Services() {
                 "Schedule a free consultation with our experts",
                 "Receive a customized energy plan",
                 "Approve the proposal and schedule installation",
-                "Enjoy clean, renewable energy!",
+                "Enjoy clean, renewable energy!"
               ].map((step, index) => (
                 <motion.div
                   key={index}
@@ -154,46 +171,46 @@ export default function Services() {
               <motion.form
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                className="space-y-4"
+                className="space-y-6"
               >
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full p-2 rounded-md text-blue-900"
-                  required
-                />
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  className="w-full p-2 rounded-md text-blue-900"
-                  required
-                />
-                <textarea
-                  placeholder="Your Message"
-                  rows={4}
-                  className="w-full p-2 rounded-md text-blue-900"
-                  required
-                ></textarea>
-                <button
-                  type="submit"
-                  className="bg-teal-500 text-white px-6 py-2 rounded-md hover:bg-teal-600 transition-colors flex items-center"
-                >
-                  Send Message
-                  <ArrowRight size={20} className="ml-2" />
+                <div>
+                  <label htmlFor="name" className="block text-lg font-medium mb-2">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    className="w-full border border-teal-300 rounded-lg px-4 py-2 text-blue-900"
+                    placeholder="Your Name"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-lg font-medium mb-2">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="w-full border border-teal-300 rounded-lg px-4 py-2 text-blue-900"
+                    placeholder="Your Email"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-lg font-medium mb-2">Message</label>
+                  <textarea
+                    id="message"
+                    className="w-full border border-teal-300 rounded-lg px-4 py-2 text-blue-900"
+                    placeholder="Your Message"
+                    rows={5}
+                  />
+                </div>
+                <button className="bg-teal-600 text-white py-2 px-4 rounded-lg hover:bg-teal-700 transition-colors flex items-center space-x-2">
+                  <span>Send Message</span>
+                  <ArrowRight />
                 </button>
               </motion.form>
             </div>
           </div>
         </section>
       </main>
-
-      <footer className="bg-blue-900 text-white py-6">
-        <div className="container mx-auto px-6 text-center">
-          <p>&copy; 2024 EnergyPro. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   )
 }
