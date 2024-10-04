@@ -58,7 +58,7 @@ export default function About() {
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/images/image1.jpeg"
+                  src="/1.jpg"
                   alt="EnergyPro Founders"
                   width={400}
                   height={300}
@@ -70,7 +70,7 @@ export default function About() {
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/images/solar-panels.jpg"
+                  src="/2.jpg"
                   alt="EnergyPro Solar Panels"
                   width={400}
                   height={300}
@@ -82,7 +82,7 @@ export default function About() {
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/images/team.jpg"
+                  src="/3.jpg"
                   alt="EnergyPro Team"
                   width={400}
                   height={300}
@@ -94,7 +94,7 @@ export default function About() {
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/images/sustainability.jpg"
+                  src="/4.jpg"
                   alt="EnergyPro Sustainability"
                   width={400}
                   height={300}
@@ -126,7 +126,9 @@ export default function About() {
                   Join Our Mission
                 </h2>
                 <p className="text-lg text-teal-700">
-                  Imagine a world where your rooftop solar panels can power your neighbors! We're creating a decentralized energy marketplace that connects communities, promotes green living, and speeds up India's journey to clean energy.
+                Imagine a world where your rooftop solar panels not only power your home but also benefit your neighbors! 
+                We&apos;re building a decentralized energy marketplace that empowers communities, encourages sustainable living, 
+                and accelerates India&apos;s transition to clean, renewable energy.
                 </p>
               </section>
 
