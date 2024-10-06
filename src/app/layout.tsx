@@ -9,7 +9,6 @@ import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui"; // For handling wallet selection UI
 import { clusterApiUrl } from "@solana/web3.js";
 
-import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import "@solana/wallet-adapter-react-ui/styles.css"; // Optional styling for the wallet UI

@@ -10,12 +10,11 @@ import Link from 'next/link'
 
 import { useWallet } from '@solana/wallet-adapter-react';
 import { useWalletModal } from '@solana/wallet-adapter-react-ui';
-import { useState } from 'react';
 
 export default function Home() {
   const { connect, connected, publicKey } = useWallet();
   const { setVisible } = useWalletModal(); // Show wallet selection modal
-  const [error, setError] = useState(null);
+
   const handleConnectPhantom = async () => {
     try {
       if (!connected) {
@@ -25,8 +24,8 @@ export default function Home() {
       } else {
         console.log('Already connected to:', publicKey?.toString());
       }
-    } catch (e:any) {
-      setError(e.message);
+    } catch (e:unknown) {
+
       console.error('Failed to connect to Phantom wallet:', e);
     }
   };

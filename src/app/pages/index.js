@@ -1,5 +1,5 @@
 import { useWallet } from '@solana/wallet-adapter-react';
-import { useEffect, useState } from 'react';
+import {useState } from 'react';
 
 export default function Home() {
   const [ethAccount, setEthAccount] = useState(null);
