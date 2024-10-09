@@ -1,8 +1,6 @@
-
-
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { Zap, User, Wallet, Sun } from 'lucide-react'
 import { motion } from 'framer-motion'
@@ -12,8 +10,9 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import { useWalletModal } from '@solana/wallet-adapter-react-ui';
 
 export default function Home() {
-  const { connect, connected, publicKey } = useWallet();
+  const { connect, disconnect, connected, publicKey, autoConnect } = useWallet();
   const { setVisible } = useWalletModal(); // Show wallet selection modal
+  const [reconnecting, setReconnecting] = useState(false);
 
   const handleConnectPhantom = async () => {
     try {
@@ -24,11 +23,40 @@ export default function Home() {
       } else {
         console.log('Already connected to:', publicKey?.toString());
       }
-    } catch (e:unknown) {
-
+    } catch (e: unknown) {
       console.error('Failed to connect to Phantom wallet:', e);
     }
   };
+
+  const handleDisconnectPhantom = async () => {
+    try {
+      if (connected) {
+        await disconnect();
+        console.log('Disconnected from wallet');
+      }
+    } catch (e: unknown) {
+      console.error('Failed to disconnect from Phantom wallet:', e);
+    }
+  };
+
+  // Reconnect on page reload
+  useEffect(() => {
+    const reconnectWallet = async () => {
+      if (autoConnect && !connected && !reconnecting) {
+        setReconnecting(true);
+        try {
+          await connect();
+          console.log('Reconnected to wallet:', publicKey?.toString());
+        } catch (e: unknown) {
+          console.error('Failed to reconnect:', e);
+        } finally {
+          setReconnecting(false);
+        }
+      }
+    };
+    reconnectWallet();
+  }, [autoConnect, connected, connect, publicKey]);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-teal-100 flex flex-col overflow-hidden">
       <Head>
@@ -66,19 +94,27 @@ export default function Home() {
               </motion.button>
             </Link>
 
-            <motion.button
-              className="bg-blue-500 text-white px-4 py-2 rounded-md flex items-center hover:bg-blue-600 transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleConnectPhantom}
-            
-            >
-              <Wallet size={18} className="mr-2" />
-              
-              Connect Wallet
-        
-              
-            </motion.button>
+            {!connected ? (
+              <motion.button
+                className="bg-blue-500 text-white px-4 py-2 rounded-md flex items-center hover:bg-blue-600 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleConnectPhantom}
+              >
+                <Wallet size={18} className="mr-2" />
+                Connect Wallet
+              </motion.button>
+            ) : (
+              <motion.button
+                className="bg-red-500 text-white px-4 py-2 rounded-md flex items-center hover:bg-red-600 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleDisconnectPhantom}
+              >
+                <Wallet size={18} className="mr-2" />
+                Disconnect Wallet
+              </motion.button>
+            )}
           </div>
         </nav>
       </motion.header>
@@ -156,5 +192,3 @@ export default function Home() {
     </div>
   )
 }
-
-
